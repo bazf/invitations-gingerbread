@@ -23,7 +23,7 @@
     }
 
     .overlay {
-      background-color: rgba(248, 249, 250, 0.35);
+      background-color: rgba(248, 249, 250, 0.8);
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -221,14 +221,14 @@
       </div>
       <h2 class="text-center mb-4">Дорогі <span id="inviteesList"></span>!</h2>
       <p>
-        Пишу вам із від самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія, аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
+        Пишу вам із самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія, аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
       </p>
       <p>
         Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка, щоб завершити всі завдання та розвіяти злі чари.
       </p>
       <p>
         <strong>Дата:</strong> 11 грудня, 9:45 <br>
-        <strong>Місце:</strong> Ваш найкращий садочок!
+        <strong>Місце:</strong> [ваша адреса]
       </p>
     </div>
   </div>
@@ -313,13 +313,20 @@
 
     // Function to add a new invitee input field
     addInviteeBtn.addEventListener('click', () => {
-      const newField = document.createElement('div');
-      newField.classList.add('mb-3', 'invitee-field');
-      newField.innerHTML = `
-        <label class="form-label">Ім'я та Прізвище</label>
-        <input type="text" class="form-control inviteeInput" required>
-      `;
-      inviteeFields.appendChild(newField);
+      const currentInvitees = document.querySelectorAll('.invitee-field').length;
+      if (currentInvitees < 5) {
+        const newField = document.createElement('div');
+        newField.classList.add('mb-3', 'invitee-field');
+        newField.innerHTML = `
+          <label class="form-label">Ім'я та Прізвище</label>
+          <input type="text" class="form-control inviteeInput" required>
+        `;
+        inviteeFields.appendChild(newField);
+
+        if (currentInvitees + 1 >= 5) {
+          addInviteeBtn.disabled = true;
+        }
+      }
     });
 
     inviteForm.addEventListener('submit', function (e) {
