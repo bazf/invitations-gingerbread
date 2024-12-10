@@ -2,19 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Запрошення у Солодке королівство</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    rel="stylesheet"
+  />
   <style>
     body {
-      background-image: url('img/background.png');
+      background-image: url("img/background.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      font-family: 'Arial', sans-serif;
+      font-family: "Arial", sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
@@ -95,7 +101,6 @@
       0% {
         transform: translateY(-100vh);
       }
-
       100% {
         transform: translateY(100vh);
       }
@@ -122,19 +127,19 @@
     .gingerbread {
       width: 60px;
       height: 60px;
-      background-image: url('img/gingerbread.png');
+      background-image: url("img/gingerbread.png");
     }
 
     .holly {
       width: 150px;
       height: 150px;
-      background-image: url('img/holly.png');
+      background-image: url("img/holly.png");
     }
 
     .candy-cane {
       width: 170px;
       height: 170px;
-      background-image: url('img/candy-cane.png');
+      background-image: url("img/candy-cane.png");
       transform: rotate(45deg);
     }
 
@@ -142,11 +147,9 @@
       0% {
         transform: translate(0, 0) rotate(0deg);
       }
-
       50% {
         transform: translate(var(--translate-x), var(--translate-y)) rotate(10deg);
       }
-
       100% {
         transform: translate(0, 0) rotate(-10deg);
       }
@@ -209,7 +212,11 @@
       </div>
     </div>
 
-    <div class="container content-section christmas-border hidden-content" data-aos="fade-up" id="invitationContent">
+    <div
+      class="container content-section christmas-border hidden-content"
+      data-aos="fade-up"
+      id="invitationContent"
+    >
       <div class="christmas-decoration">
         <div class="gingerbread floating" style="top: -30px; left: 20px;"></div>
         <div class="holly floating" style="top: -20px; right: 30px;"></div>
@@ -217,22 +224,30 @@
       </div>
       <h2 class="text-center mb-4">Дорогі <span id="inviteesList"></span>!</h2>
       <p>
-        Пишу вам від самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія,
-        аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
+        Пишу вам від самого серця наших вихователів "Солодкого королівства пряників",
+        де завжди панує святкова магія, аромати щойно спечених смаколиків та
+        дзвінкий сміх щасливих дітей.
       </p>
       <p>
-        Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка, щоб завершити всі завдання та
-        розвіяти злі чари.
+        Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка,
+        щоб завершити всі завдання та розвіяти злі чари.
       </p>
       <p>
-        <strong>Дата:</strong> 11 грудня, 9:45 <br>
+        <strong>Дата:</strong> 11 грудня, 9:45 <br />
         <strong>Місце:</strong> Ваш найкращий садочок
       </p>
     </div>
   </div>
 
-  <div class="modal fade" id="inviteModal" tabindex="-1" aria-labelledby="inviteModalLabel" aria-hidden="true"
-    data-bs-backdrop="static" data-bs-keyboard="false">
+  <div
+    class="modal fade"
+    id="inviteModal"
+    tabindex="-1"
+    aria-labelledby="inviteModalLabel"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -243,11 +258,13 @@
             <div id="inviteeFields">
               <div class="mb-3 invitee-field">
                 <label class="form-label">Ім'я та Прізвище</label>
-                <input type="text" class="form-control inviteeInput" required>
+                <input type="text" class="form-control inviteeInput" required />
               </div>
             </div>
-            <button type="button" class="btn btn-secondary mb-3" id="addInviteeBtn">Додати ще</button>
-            <br>
+            <button type="button" class="btn btn-secondary mb-3" id="addInviteeBtn">
+              Додати ще
+            </button>
+            <br />
             <button type="submit" class="btn btn-primary">Підтвердити</button>
           </form>
         </div>
@@ -255,21 +272,30 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+  ></script>
   <script>
     AOS.init();
 
     function createSnowflake() {
-      const snowflake = document.createElement('div');
-      snowflake.classList.add('snowflake');
-      snowflake.style.left = Math.random() * window.innerWidth + 'px';
-      snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.style.left = Math.random() * window.innerWidth + "px";
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
       snowflake.style.opacity = Math.random();
-      snowflake.style.width = snowflake.style.height = (Math.random() * 10 + 10) + 'px';
-      document.querySelector('.hero-section').appendChild(snowflake);
+      snowflake.style.width = snowflake.style.height =
+        Math.random() * 10 + 10 + "px";
+      document.querySelector(".hero-section").appendChild(snowflake);
 
       setTimeout(() => {
         snowflake.remove();
@@ -279,29 +305,27 @@
     setInterval(createSnowflake, 100);
 
     function applyRandomFloating() {
-      const floatingElements = document.querySelectorAll('.floating');
-      floatingElements.forEach(element => {
-        const duration = (Math.random() * 10 + 10).toFixed(2) + 's';
-        const delay = '0s';
-        const translateX = (Math.random() * 100 - 50).toFixed(2) + 'vw';
-        const translateY = (Math.random() * 50 - 25).toFixed(2) + 'vh';
+      const floatingElements = document.querySelectorAll(".floating");
+      floatingElements.forEach((element) => {
+        const duration = (Math.random() * 10 + 10).toFixed(2) + "s";
+        const translateX = (Math.random() * 100 - 50).toFixed(2) + "vw";
+        const translateY = (Math.random() * 50 - 25).toFixed(2) + "vh";
 
         element.style.animationDuration = duration;
-        element.style.animationDelay = delay;
-        element.style.setProperty('--translate-x', translateX);
-        element.style.setProperty('--translate-y', translateY);
+        element.style.setProperty("--translate-x", translateX);
+        element.style.setProperty("--translate-y", translateY);
       });
     }
 
-    document.addEventListener('DOMContentLoaded', applyRandomFloating);
+    document.addEventListener("DOMContentLoaded", applyRandomFloating);
 
-    const inviteModal = new bootstrap.Modal(document.getElementById('inviteModal'));
-    const inviteForm = document.getElementById('inviteForm');
-    const inviteesListSpan = document.getElementById('inviteesList');
-    const hiddenContent = document.querySelector('.hidden-content');
-    const addInviteeBtn = document.getElementById('addInviteeBtn');
-    const inviteeFields = document.getElementById('inviteeFields');
-    const downloadBtn = document.getElementById('downloadBtn');
+    const inviteModal = new bootstrap.Modal(document.getElementById("inviteModal"));
+    const inviteForm = document.getElementById("inviteForm");
+    const inviteesListSpan = document.getElementById("inviteesList");
+    const hiddenContent = document.querySelector(".hidden-content");
+    const addInviteeBtn = document.getElementById("addInviteeBtn");
+    const inviteeFields = document.getElementById("inviteeFields");
+    const downloadBtn = document.getElementById("downloadBtn");
 
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
@@ -309,25 +333,25 @@
     }
 
     window.onload = () => {
-      const namesParam = getQueryParam('names');
+      const namesParam = getQueryParam("names");
       if (namesParam) {
         const invitees = namesParam
-          .split(',')
-          .map(name => name.trim().replace(/-/g, ' ')) // replace '-' with space
+          .split(",")
+          .map((name) => name.trim().replace(/-/g, " "))
           .filter(Boolean);
-        inviteesListSpan.innerHTML = invitees.join(', ');
-        hiddenContent.classList.remove('hidden-content');
+        inviteesListSpan.innerHTML = invitees.join(", ");
+        hiddenContent.classList.remove("hidden-content");
       } else {
         // No names in query string, show the modal
         inviteModal.show();
       }
     };
 
-    addInviteeBtn.addEventListener('click', () => {
-      const currentInvitees = document.querySelectorAll('.invitee-field').length;
+    addInviteeBtn.addEventListener("click", () => {
+      const currentInvitees = document.querySelectorAll(".invitee-field").length;
       if (currentInvitees < 5) {
-        const newField = document.createElement('div');
-        newField.classList.add('mb-3', 'invitee-field');
+        const newField = document.createElement("div");
+        newField.classList.add("mb-3", "invitee-field");
         newField.innerHTML = `
           <label class="form-label">Ім'я та Прізвище</label>
           <input type="text" class="form-control inviteeInput" required>
@@ -340,11 +364,11 @@
       }
     });
 
-    inviteForm.addEventListener('submit', function (e) {
+    inviteForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      const inviteeInputs = document.querySelectorAll('.inviteeInput');
+      const inviteeInputs = document.querySelectorAll(".inviteeInput");
       const invitees = [];
-      inviteeInputs.forEach(input => {
+      inviteeInputs.forEach((input) => {
         const name = input.value.trim();
         if (name) {
           invitees.push(name);
@@ -352,24 +376,32 @@
       });
 
       if (invitees.length > 0) {
-        inviteesListSpan.innerHTML = invitees.join(', ');
+        inviteesListSpan.innerHTML = invitees.join(", ");
         inviteModal.hide();
-        hiddenContent.classList.remove('hidden-content');
+        hiddenContent.classList.remove("hidden-content");
       }
     });
 
-    downloadBtn.addEventListener('click', async () => {
+    downloadBtn.addEventListener("click", async () => {
       const { jsPDF } = window.jspdf;
-      const element = document.getElementById('invitationContent');
+      const element = document.getElementById("invitationContent");
 
-      html2canvas(element).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'pt', 'a5');
+      // Show loader state
+      downloadBtn.textContent = "Готую!";
+      downloadBtn.disabled = true;
+
+      html2canvas(element).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF("p", "pt", "a5");
         const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('invitation.pdf');
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("invitation.pdf");
+
+        // Revert button state
+        downloadBtn.textContent = "Долучайтеся до пригод!";
+        downloadBtn.disabled = false;
       });
     });
   </script>
