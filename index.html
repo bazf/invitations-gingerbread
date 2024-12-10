@@ -217,10 +217,12 @@
       </div>
       <h2 class="text-center mb-4">Дорогі <span id="inviteesList"></span>!</h2>
       <p>
-        Пишу вам від самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія, аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
+        Пишу вам від самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія,
+        аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
       </p>
       <p>
-        Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка, щоб завершити всі завдання та розвіяти злі чари.
+        Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка, щоб завершити всі завдання та
+        розвіяти злі чари.
       </p>
       <p>
         <strong>Дата:</strong> 11 грудня, 9:45 <br>
@@ -229,7 +231,8 @@
     </div>
   </div>
 
-  <div class="modal fade" id="inviteModal" tabindex="-1" aria-labelledby="inviteModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal fade" id="inviteModal" tabindex="-1" aria-labelledby="inviteModalLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -308,8 +311,10 @@
     window.onload = () => {
       const namesParam = getQueryParam('names');
       if (namesParam) {
-        // If names are provided in the query string, skip the modal
-        const invitees = namesParam.split(',').map(name => name.trim()).filter(Boolean);
+        const invitees = namesParam
+          .split(',')
+          .map(name => name.trim().replace(/-/g, ' ')) // replace '-' with space
+          .filter(Boolean);
         inviteesListSpan.innerHTML = invitees.join(', ');
         hiddenContent.classList.remove('hidden-content');
       } else {
