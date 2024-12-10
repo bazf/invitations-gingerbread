@@ -300,8 +300,22 @@
     const inviteeFields = document.getElementById('inviteeFields');
     const downloadBtn = document.getElementById('downloadBtn');
 
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
     window.onload = () => {
-      inviteModal.show();
+      const namesParam = getQueryParam('names');
+      if (namesParam) {
+        // If names are provided in the query string, skip the modal
+        const invitees = namesParam.split(',').map(name => name.trim()).filter(Boolean);
+        inviteesListSpan.innerHTML = invitees.join(', ');
+        hiddenContent.classList.remove('hidden-content');
+      } else {
+        // No names in query string, show the modal
+        inviteModal.show();
+      }
     };
 
     addInviteeBtn.addEventListener('click', () => {
