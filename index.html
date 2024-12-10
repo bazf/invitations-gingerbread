@@ -9,21 +9,34 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8f9fa;
-      font-family: 'Arial', sans-serif;
-      overflow-x: hidden; /* Prevent horizontal scrollbar due to floating elements */
-    }
-
-    .hero-section {
       background-image: url('img/background.png');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .overlay {
+      background-color: rgba(248, 249, 250, 0.35);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-section {
       color: white;
-      padding: 5rem 1rem;
+      padding: 2rem 1rem;
       position: relative;
       overflow: hidden;
-      height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
@@ -31,12 +44,11 @@
     .hero-section h1,
     .hero-section p {
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-      padding: 1rem;
+      padding: 0.5rem 1rem;
       background-color: rgba(0, 0, 0, 0.5);
       border-radius: 10px;
       display: inline-block;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 1rem;
     }
 
     .content-section {
@@ -44,13 +56,14 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       padding: 2rem;
-      margin-top: -3rem;
-      position: relative;
+      margin: 1rem auto 0;
+      max-width: 800px;
       border: 2px solid #e8584e;
       background-image: url('img/snowflake-pattern.png');
       background-size: 200px;
       background-blend-mode: overlay;
       z-index: 1;
+      position: relative;
     }
 
     .btn-invite {
@@ -97,7 +110,6 @@
       z-index: 0;
     }
 
-    /* Common floating class */
     .floating {
       position: absolute;
       background-size: contain;
@@ -105,7 +117,7 @@
       animation-name: float;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
-      z-index: -1; /* Ensures floating elements appear below text */
+      z-index: -1;
     }
 
     .gingerbread {
@@ -147,56 +159,77 @@
       padding: 15px;
     }
 
-    /* Hide main content initially */
     .hidden-content {
       display: none;
     }
 
-    /* Modal Overlay to ensure only modal and snow are visible */
     .modal-backdrop.show {
       opacity: 0.8;
+    }
+
+    @media (max-height: 700px) {
+      .hero-section {
+        padding: 1.5rem 1rem;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+
+      .btn-invite {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Snowflake Container -->
-  <div class="hero-section text-center">
-    <div class="christmas-decoration">
-      <!-- Added 'floating' class to all decorative elements -->
-      <div class="gingerbread floating" style="top: 10%; left: 5%;"></div>
-      <div class="gingerbread floating" style="top: 15%; right: 10%;"></div>
-      <div class="holly floating" style="bottom: 20%; left: 15%;"></div>
-      <div class="holly floating" style="top: 30%; right: 20%;"></div>
-      <div class="candy-cane floating" style="bottom: 10%; right: 5%;"></div>
+  <div class="overlay">
+    <!-- Snowflake Container -->
+    <div class="hero-section text-center">
+      <div class="christmas-decoration">
+        <div class="gingerbread floating" style="top: 10%; left: 5%;"></div>
+        <div class="gingerbread floating" style="top: 15%; right: 10%;"></div>
+        <div class="holly floating" style="bottom: 20%; left: 15%;"></div>
+        <div class="holly floating" style="top: 30%; right: 20%;"></div>
+        <div class="candy-cane floating" style="bottom: 10%; right: 5%;"></div>
+      </div>
+      <div data-aos="fade-up">
+        <h1 class="display-5 fw-bold">Запрошення у Солодке Королівство</h1>
+        <p class="lead">Вирушайте у подорож назустріч казковим пригодам!</p>
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-invite">Долучайтеся до пригод!</button>
+      </div>
     </div>
-    <div data-aos="fade-up">
-      <h1 class="display-4 fw-bold">Запрошення у Солодке Королівство</h1>
-      <p class="lead">Вирушайте у подорож назустріч казковим пригодам!</p>
-    </div>
-  </div>
 
-  <!-- Content Section -->
-  <div class="container content-section christmas-border hidden-content" data-aos="fade-up">
-    <div class="christmas-decoration">
-      <!-- Added 'floating' class to all decorative elements -->
-      <div class="gingerbread floating" style="top: -30px; left: 20px;"></div>
-      <div class="holly floating" style="top: -20px; right: 30px;"></div>
-      <div class="candy-cane floating" style="bottom: 20px; left: 10px;"></div>
-    </div>
-    <h2 class="text-center mb-4">Дорогі <span id="inviteesList"></span>!</h2>
-    <p>
-      Пишу вам із самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія, аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
-    </p>
-    <p>
-      Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка, щоб завершити всі завдання та розвіяти злі чари.
-    </p>
-    <p>
-      <strong>Дата:</strong> 11 грудня, 9:45 <br>
-      <strong>Місце:</strong> [ваша адреса]
-    </p>
-    <div class="text-center">
-      <button class="btn btn-invite">Долучайтеся до пригод!</button>
+    <!-- Content Section -->
+    <div class="container content-section christmas-border hidden-content" data-aos="fade-up">
+      <div class="christmas-decoration">
+        <div class="gingerbread floating" style="top: -30px; left: 20px;"></div>
+        <div class="holly floating" style="top: -20px; right: 30px;"></div>
+        <div class="candy-cane floating" style="bottom: 20px; left: 10px;"></div>
+      </div>
+      <h2 class="text-center mb-4">Дорогі <span id="inviteesList"></span>!</h2>
+      <p>
+        Пишу вам із від самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія, аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
+      </p>
+      <p>
+        Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка, щоб завершити всі завдання та розвіяти злі чари.
+      </p>
+      <p>
+        <strong>Дата:</strong> 11 грудня, 9:45 <br>
+        <strong>Місце:</strong> Ваш найкращий садочок!
+      </p>
     </div>
   </div>
 
@@ -251,25 +284,18 @@
     function applyRandomFloating() {
       const floatingElements = document.querySelectorAll('.floating');
       floatingElements.forEach(element => {
-        // Random duration between 10s and 20s for slower, more graceful movement
         const duration = (Math.random() * 10 + 10).toFixed(2) + 's';
-        // Remove animation delay to start immediately
         const delay = '0s';
-        // Random horizontal movement between -50vw and 50vw
         const translateX = (Math.random() * 100 - 50).toFixed(2) + 'vw';
-        // Random vertical movement between -25vh and 25vh (total movement spans 50vh)
         const translateY = (Math.random() * 50 - 25).toFixed(2) + 'vh';
 
-        // Apply the random duration and no delay
         element.style.animationDuration = duration;
         element.style.animationDelay = delay;
-        // Set CSS variables for transform in keyframes
         element.style.setProperty('--translate-x', translateX);
         element.style.setProperty('--translate-y', translateY);
       });
     }
 
-    // Apply random floating after the DOM content is loaded
     document.addEventListener('DOMContentLoaded', applyRandomFloating);
 
     // Modal Handling
