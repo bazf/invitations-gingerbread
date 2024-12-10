@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Запрошення у Солодке королівство</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden; /* Prevent horizontal scrollbar due to floating elements */
+    }
+
+    .hero-section {
+      background-image: url('img/background.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 5rem 1rem;
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-section h1,
+    .hero-section p {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content-section {
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-top: -3rem;
+      position: relative;
+      border: 2px solid #e8584e;
+      background-image: url('img/snowflake-pattern.png');
+      background-size: 200px;
+      background-blend-mode: overlay;
+      z-index: 1;
+    }
+
+    .btn-invite {
+      background-color: #ff6f61;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 50px;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    .btn-invite:hover {
+      transform: scale(1.1);
+      background-color: #e8584e;
+    }
+
+    .snowflake {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 10px white);
+      z-index: 0;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    .christmas-decoration {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Common floating class */
+    .floating {
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation-name: float;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      z-index: -1; /* Ensures floating elements appear below text */
+    }
+
+    .gingerbread {
+      width: 60px;
+      height: 60px;
+      background-image: url('img/gingerbread.png');
+    }
+
+    .holly {
+      width: 150px;
+      height: 150px;
+      background-image: url('img/holly.png');
+    }
+
+    .candy-cane {
+      width: 170px;
+      height: 170px;
+      background-image: url('img/candy-cane.png');
+      transform: rotate(45deg);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      50% {
+        transform: translate(var(--translate-x), var(--translate-y)) rotate(10deg);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(-10deg);
+      }
+    }
+
+    .christmas-border {
+      border: 10px solid transparent;
+      border-image: url('img/christmas-border.png') 30 round;
+      padding: 15px;
+    }
+
+    /* Hide main content initially */
+    .hidden-content {
+      display: none;
+    }
+
+    /* Modal Overlay to ensure only modal and snow are visible */
+    .modal-backdrop.show {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Snowflake Container -->
+  <div class="hero-section text-center">
+    <div class="christmas-decoration">
+      <!-- Added 'floating' class to all decorative elements -->
+      <div class="gingerbread floating" style="top: 10%; left: 5%;"></div>
+      <div class="gingerbread floating" style="top: 15%; right: 10%;"></div>
+      <div class="holly floating" style="bottom: 20%; left: 15%;"></div>
+      <div class="holly floating" style="top: 30%; right: 20%;"></div>
+      <div class="candy-cane floating" style="bottom: 10%; right: 5%;"></div>
+    </div>
+    <div data-aos="fade-up">
+      <h1 class="display-4 fw-bold">Запрошення у Солодке Королівство</h1>
+      <p class="lead">Вирушайте у подорож назустріч казковим пригодам!</p>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="container content-section christmas-border hidden-content" data-aos="fade-up">
+    <div class="christmas-decoration">
+      <!-- Added 'floating' class to all decorative elements -->
+      <div class="gingerbread floating" style="top: -30px; left: 20px;"></div>
+      <div class="holly floating" style="top: -20px; right: 30px;"></div>
+      <div class="candy-cane floating" style="bottom: 20px; left: 10px;"></div>
+    </div>
+    <h2 class="text-center mb-4">Дорогі <span id="inviteesList"></span>!</h2>
+    <p>
+      Пишу вам із самого серця наших вихователів "Солодкого королівства пряників", де завжди панує святкова магія, аромати щойно спечених смаколиків та дзвінкий сміх щасливих дітей.
+    </p>
+    <p>
+      Наші маленькі помічники вже готові до дій, але їм потрібна ваша підтримка, щоб завершити всі завдання та розвіяти злі чари.
+    </p>
+    <p>
+      <strong>Дата:</strong> 11 грудня, 9:45 <br>
+      <strong>Місце:</strong> [ваша адреса]
+    </p>
+    <div class="text-center">
+      <button class="btn btn-invite">Долучайтеся до пригод!</button>
+    </div>
+  </div>
+
+  <!-- Invitation Modal -->
+  <div class="modal fade" id="inviteModal" tabindex="-1" aria-labelledby="inviteModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inviteModalLabel">Введіть імена запрошених</h5>
+        </div>
+        <div class="modal-body">
+          <form id="inviteForm">
+            <div id="inviteeFields">
+              <div class="mb-3 invitee-field">
+                <label class="form-label">Ім'я та Прізвище</label>
+                <input type="text" class="form-control inviteeInput" required>
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary mb-3" id="addInviteeBtn">Додати ще</button>
+            <br>
+            <button type="submit" class="btn btn-primary">Підтвердити</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Snowflake Creation Function
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      snowflake.style.opacity = Math.random();
+      snowflake.style.width = snowflake.style.height = (Math.random() * 10 + 10) + 'px';
+      document.querySelector('.hero-section').appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 10000);
+    }
+
+    setInterval(createSnowflake, 100);
+
+    // Function to assign random animation properties to floating elements
+    function applyRandomFloating() {
+      const floatingElements = document.querySelectorAll('.floating');
+      floatingElements.forEach(element => {
+        // Random duration between 10s and 20s for slower, more graceful movement
+        const duration = (Math.random() * 10 + 10).toFixed(2) + 's';
+        // Remove animation delay to start immediately
+        const delay = '0s';
+        // Random horizontal movement between -50vw and 50vw
+        const translateX = (Math.random() * 100 - 50).toFixed(2) + 'vw';
+        // Random vertical movement between -25vh and 25vh (total movement spans 50vh)
+        const translateY = (Math.random() * 50 - 25).toFixed(2) + 'vh';
+
+        // Apply the random duration and no delay
+        element.style.animationDuration = duration;
+        element.style.animationDelay = delay;
+        // Set CSS variables for transform in keyframes
+        element.style.setProperty('--translate-x', translateX);
+        element.style.setProperty('--translate-y', translateY);
+      });
+    }
+
+    // Apply random floating after the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', applyRandomFloating);
+
+    // Modal Handling
+    const inviteModal = new bootstrap.Modal(document.getElementById('inviteModal'));
+    const inviteForm = document.getElementById('inviteForm');
+    const inviteesListSpan = document.getElementById('inviteesList');
+    const hiddenContent = document.querySelector('.hidden-content');
+    const addInviteeBtn = document.getElementById('addInviteeBtn');
+    const inviteeFields = document.getElementById('inviteeFields');
+
+    // Show the modal on page load
+    window.onload = () => {
+      inviteModal.show();
+    };
+
+    // Function to add a new invitee input field
+    addInviteeBtn.addEventListener('click', () => {
+      const newField = document.createElement('div');
+      newField.classList.add('mb-3', 'invitee-field');
+      newField.innerHTML = `
+        <label class="form-label">Ім'я та Прізвище</label>
+        <input type="text" class="form-control inviteeInput" required>
+      `;
+      inviteeFields.appendChild(newField);
+    });
+
+    inviteForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const inviteeInputs = document.querySelectorAll('.inviteeInput');
+      const invitees = [];
+      inviteeInputs.forEach(input => {
+        const name = input.value.trim();
+        if (name) {
+          invitees.push(name);
+        }
+      });
+
+      if (invitees.length > 0) {
+        inviteesListSpan.innerHTML = invitees.join(', ');
+        inviteModal.hide();
+        hiddenContent.classList.remove('hidden-content');
+      }
+    });
+  </script>
+</body>
+
+</html>
